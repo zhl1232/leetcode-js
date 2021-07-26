@@ -1,4 +1,4 @@
-const { getProblems, getTranslation } = require('./api/leetcode')
+const { getProblems, getTranslation, getTags } = require('./api/leetcode')
 const fs = require('fs')
 
 async function main() {
@@ -28,14 +28,38 @@ async function getLeetcodeProblems () {
   const problemsResp = await getProblems()
   console.log(`获取题目数据${ problemsResp.status === 200 ? '成功': '失败' }`)
   const problems = getSimplifyProblems(problemsResp.data.stat_status_pairs) // 获取简化列表
+  // 
+  const tags = await getTags()
+  console.log(`获取标签${ tags.status === 200 ? '成功': '失败' }`)
+  const tagsMap = getTagsMap(problems, tags.data)
+
   //  2.获取翻译映射（简化列表中许多 title 都是英文，需要参照映射表翻译）
   const dictResp = await getTranslation()
   console.log(`获取翻译映射${ dictResp.status === 200 ? '成功': '失败' }`)
   const dictMap = getTranslationDict(dictResp.data.data.translations)
   //  3.遍历完成翻译
-  const problemZhs = localizeProblems(problems, dictMap)
+  const problemZhs = localizeProblems(tagsMap, dictMap)
   console.log('遍历完成翻译，结果长度为:', problemZhs.length)
   return problemZhs
+}
+
+// 获取标签
+
+function getTagsMap(problems, tags) {
+  const map = new Map()
+  problems.forEach(item => {
+    map.set(item.id, [])
+  })
+  tags.topics.forEach(item => {
+    item.questions.forEach(id => {
+      map.has(id) && map.get(id).push(item.translatedName)
+    })
+  })
+  let res = problems.map(item => {
+    item.topics = map.get(item.id)
+    return item
+  })
+  return res
 }
 
 // get problems from json
@@ -177,8 +201,10 @@ function getDiffProblemsWithExistsFiles (problems, existsFileNames) {
 
 // 替换模板字段
 function fillTpl(tpl, item) {
+  // console.log(JSON.stringify(item, null, 4))
   return tpl
     .replace('{title}', item.titleZh)
     .replace('{url}', `https://leetcode-cn.com/problems/${item.slug}/`)
     .replace('{difficulty}', item.level === 1 ? 'Easy' : (item.level === 2 ? 'Medium' : 'Hard'))
+    .replace('{topics}', item.topics && item.topics.join(', '))
 }

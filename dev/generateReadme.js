@@ -16,7 +16,7 @@ async function main () {
 
   // 2. 生成题目列表，写入 README
   if (fs.existsSync('./leetcode/README.md')) fs.unlinkSync('./leetcode/README.md')
-  const readmeTpl = `# Leetcode-js\r\n\r\n题目|难度|题解|\r\n|-|-|-|\r\n{table}`
+  const readmeTpl = `# Leetcode-js\r\n\r\n题目|难度|标签|题解|\r\n|-|-|-|-|\r\n{table}`
   const listArr = fillProblemTpl(problems)
   const readmeContent = readmeTpl.replace('{table}', listArr.join('\r\n'))
   fs.writeFileSync('./leetcode/README.md', readmeContent)
@@ -33,7 +33,8 @@ function fillProblemTpl (item) {
     const problem = `[${v.feId}.${v.titleZh}](https://leetcode-cn.com/problems/${v.slug}/)`
     const difficulty = v.level === 1 ? 'Easy' : (v.level === 2 ? 'Medium' : 'Hard')
     const answerUrl = `./${v.feId}_${v.titleZh}`.replace(/\s/g, '')
-    tdArr.push(`|${problem}|${difficulty}|[题解](${answerUrl})|`)
+    const tags = v.topics.join(' ')
+    tdArr.push(`|${problem}|${difficulty}|${tags}|[题解](${answerUrl})|`)
   })
   return tdArr
 }

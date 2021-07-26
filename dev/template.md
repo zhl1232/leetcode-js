@@ -1,7 +1,7 @@
 # [{title}]({url})
 
 - 难度：{difficulty}
-- 标签：
+- 标签：{topics}
 
 ## 刷题思路
 
