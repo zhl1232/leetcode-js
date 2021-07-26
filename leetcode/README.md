@@ -12,7 +12,7 @@
 |[8.字符串转换整数(atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)|Medium|字符串|[题解](./8_字符串转换整数(atoi))|
 |[9.回文数](https://leetcode-cn.com/problems/palindrome-number/)|Easy|数学|[题解](./9_回文数)|
 |[10.正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)|Hard|递归 字符串 动态规划|[题解](./10_正则表达式匹配)|
-|[11.盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)|Medium|贪心 数组 双指针|[题解](./11_盛最多水的容器)|
+|[11.盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)|Medium|贪心 数组 双指针|[题解](./11_盛最多水的容器) AC|
 |[12.整数转罗马数字](https://leetcode-cn.com/problems/integer-to-roman/)|Medium|哈希表 数学 字符串|[题解](./12_整数转罗马数字)|
 |[13.罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/)|Easy|哈希表 数学 字符串|[题解](./13_罗马数字转整数)|
 |[14.最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/)|Easy|字符串|[题解](./14_最长公共前缀)|
@@ -21,7 +21,7 @@
 |[17.电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)|Medium|哈希表 字符串 回溯|[题解](./17_电话号码的字母组合)|
 |[18.四数之和](https://leetcode-cn.com/problems/4sum/)|Medium|数组 双指针 排序|[题解](./18_四数之和)|
 |[19.删除链表的倒数第N个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)|Medium|链表 双指针|[题解](./19_删除链表的倒数第N个结点)|
-|[20.有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)|Easy|栈 字符串|[题解](./20_有效的括号)|
+|[20.有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)|Easy|栈 字符串|[题解](./20_有效的括号) AC|
 |[21.合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)|Easy|递归 链表|[题解](./21_合并两个有序链表)|
 |[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)|Medium|字符串 动态规划 回溯|[题解](./22_括号生成)|
 |[23.合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)|Hard|链表 分治 堆（优先队列） 归并排序|[题解](./23_合并K个升序链表)|
